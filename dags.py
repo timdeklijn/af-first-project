@@ -23,7 +23,7 @@ with DAG(
         arguments=["ingest"],
         get_logs=True,
         is_delete_operator_pod=True,
-        resources=k8s.V1ResourceRequirements(
+        container_resources=k8s.V1ResourceRequirements(
             requests={"memory": "1Gi", "cpu": "500m"},
             limits={"memory": "2Gi", "cpu": "1000m"},
         ),
