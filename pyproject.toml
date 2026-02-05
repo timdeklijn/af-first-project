@@ -1,0 +1,26 @@
+[project]
+name = "first-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "click>=8.3.1",
+  "numpy>=2.4.2",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=9.0.2",
+  "apache-airflow<3",
+  "apache-airflow-providers-cncf-kubernetes",
+]
+
+# Using this build system the package 'first project' will be
+# installed.
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+first = "first_project.main:cli"
