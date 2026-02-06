@@ -44,3 +44,5 @@ with DAG(
         ),
         labels={"project": "first_project", "team": "TIM"},
     )
+
+    ingest_task >> calc_task
