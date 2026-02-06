@@ -15,12 +15,27 @@ with DAG(
     },
     tags=["first_project", "team:TIM"],
 ) as dag:
-    run_ml_task = KubernetesPodOperator(
-        task_id="first_ingest",
-        name="first-ingest",
+    ingest_task = KubernetesPodOperator(
+        task_id="ingest_task",
+        name="ingest_task",
         image="first_project:dev",
         namespace="airflow-poc",
         arguments=["ingest"],
+        get_logs=True,
+        is_delete_operator_pod=True,
+        container_resources=k8s.V1ResourceRequirements(
+            requests={"memory": "1Gi", "cpu": "500m"},
+            limits={"memory": "2Gi", "cpu": "1000m"},
+        ),
+        labels={"project": "first_project", "team": "TIM"},
+    )
+
+    calc_task = KubernetesPodOperator(
+        task_id="calc_task",
+        name="calc_task",
+        image="first_project:dev",
+        namespace="airflow-poc",
+        arguments=["calc-it", "--num", "3", "--fac", "10"],
         get_logs=True,
         is_delete_operator_pod=True,
         container_resources=k8s.V1ResourceRequirements(
