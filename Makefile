@@ -1,3 +1,5 @@
 build:
-	docker build . -t first_project
-	docker run --rm first_project "ingest"
+	docker build . -t first_project:dev
+
+run: build
+	docker run --rm first_project:dev "ingest"

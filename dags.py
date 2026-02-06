@@ -18,7 +18,7 @@ with DAG(
     run_ml_task = KubernetesPodOperator(
         task_id="first_ingest",
         name="first-ingest",
-        image="first_project:latest",
+        image="first_project:dev",
         namespace="airflow-poc",
         arguments=["ingest"],
         get_logs=True,
