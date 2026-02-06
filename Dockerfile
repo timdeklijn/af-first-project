@@ -4,6 +4,6 @@ COPY . .
 
 RUN uv sync --no-dev
 
-ENTRYPOINT ["uv", "run", "--no-dev", "first"]
+ENTRYPOINT ["uv", "run", "--no-dev", "--no-sync", "first"]
 
 CMD ["--help"]
