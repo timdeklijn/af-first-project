@@ -23,7 +23,6 @@ def ingest():
 @click.option("--fac", help="number to multiply array with", default=2)
 def calc_it(num, fac):
     logger.info("doing a complicated calculation")
-    logger.info("HOHOHOHOHO")
     result = do_calc(num, fac)
     logger.info(f"calculation finished with: {result}")
 

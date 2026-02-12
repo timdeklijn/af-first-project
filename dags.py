@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from airflow import DAG
-from kubernetes.client import models as k8s
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
+from kubernetes.client import models as k8s
 
 with DAG(
     dag_id="first_project",
